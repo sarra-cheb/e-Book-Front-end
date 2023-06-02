@@ -21,6 +21,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './components/Home';
 import HomeClient from './ClientSide/HomeClient'
+import AboutUs from './components/AboutUs';
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomeClient />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/admin" element={<PrivateRoute><Layout /></PrivateRoute>} />
           <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path='/books' element={<Books />} />
