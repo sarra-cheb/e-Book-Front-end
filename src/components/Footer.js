@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
-    <div className='container-fluid mt-5' style={{ backgroundColor: "#567189" }}>
+    <div className='container-fluid mt-5 bg-secondary' >
       <div className="row p-5 d-flex justify-content-center" >
         <div className='col-6'>
-          <Link className="navbar-brand px-5" href="/">Library of Book</Link>
+          <Link className="navbar-brand px-5" href="/home">Library of Book</Link>
           <p>We help you find your Book !!!!!</p>
           <div className="row">
             <div className="col-2 link-secondary">
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-start p-4">
+        <div className="text-start">
           <p> 2023 all Right Reserved   </p>
 
         </div>

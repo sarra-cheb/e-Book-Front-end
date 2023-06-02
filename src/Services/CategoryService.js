@@ -7,7 +7,7 @@ const getCategoryById = (id) => {
   return http.get(`/category/${id}`)
 }
 const addCategory = (data) => {
-  return http.post('/categpry', data)
+  return http.post('/category', data)
 }
 const deleteCategory = (id) => {
   return http.delete(`/category/${id}`)

@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const Register = () => {
 
   const navigate = useNavigate()
@@ -39,10 +40,12 @@ const Register = () => {
           try {
             const response = await axios.post('http://localhost:4000/api/register', values)
             navigate('/login')
-            alert(response.data.message)
+            toast.success(response.data.message)
+
           }
           catch (error) {
-            console.log('verify')
+            console.log(error)
+            toast.error(error.response.data.message)
           }
         }}
       >

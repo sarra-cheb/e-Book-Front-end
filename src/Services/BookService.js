@@ -16,8 +16,10 @@ const editBook = (id, data) => {
   return http.put(`/book/${id}`, data)
 }
 
+
+
 const Book = {
-  getAllBooks, addBook, deleteBook, getBookById, editBook
+  getAllBooks, addBook, deleteBook, getBookById, editBook,
 }
 
 export default Book

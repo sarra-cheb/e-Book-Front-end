@@ -1,10 +1,12 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik';
+import { toast } from 'react-toastify';
 const Login = () => {
   const navigate = useNavigate()
   return (
     <div className='container mt-5'>
+      <h1 className='text-center text-primary'>Connect to acces to our library shop !</h1>
       <Formik
         initialValues={{
           email: '',
@@ -27,11 +29,22 @@ const Login = () => {
           try {
             const response = await axios.post('http://localhost:4000/api/login', values)
             localStorage.setItem("token", response.data.token);
-            alert(response.data.message)
-            navigate('/')
+            localStorage.setItem("role", response.data.userRole);
+            toast.success(response.data.message)
+            if (response.data.userRole === 'admin') {
+              navigate('/admin')
+              window.location.reload();
+            }
+            else {
+              navigate('/')
+              window.location.reload();
+            }
+
           }
           catch (error) {
-            console.log('verify')
+
+            toast.error(error.response.data.message)
+
           }
         }}
       >
@@ -59,6 +72,10 @@ const Login = () => {
           </Form>
         )}
       </Formik>
+      <div className='d-flex justify-content-end'>
+        <span>If you don't have an acount , you can register by clicking here ! </span>
+        <Link to='/register' className='btn btn-warning btn-sm ms-2' >Register</Link>
+      </div>
     </div>
   )
 }
